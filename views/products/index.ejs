@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%> 
+<%-include('../partials/navbar')%>
+<div class="product-list">
+  <%let x1=0%>
+  <% for (let i of x) { %>
+    <% if(x1%3==0){%><div class=product-row><%}%> 
+    <div class="product-item">
+    <div class="img"><img src="<%=i.img%>" alt="img" /></div>
+    <div class="item-desc">
+      <h3><%=i.name%></h3>
+      <h4>₹<%=i.price%></h4>
+      <div class="button-list">
+          <a class="btn1 blue"href="">Buy</a>
+          <form action="/cart/<%=i._id%>" method="post">
+            <button class="btn1 yellow">Add to Cart</a>
+          </form>
+          <a class="btn1 purple"href="/view/<%=i._id%>">View</a>
+          <form action="/products/<%=i._id%>?_method=DELETE" method="POST">
+              <button class="btn1 red">Delete</button>
+            </form>
+        </div>
+    </div>
+  </div>
+  <%if(x1%3==2){%></div><%}%>
+  <%x1+=1%>
+  <%}%>
+</div>

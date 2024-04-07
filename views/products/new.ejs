@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+<%- include('../partials/navbar')%>
+<div class="edit-new">
+    <div class="edit-form">
+        <h2>Add your Product</h2>
+<form action="/products" method="POST">
+    <div class="input-box">
+        <input type="text" name="name" id="name" required>
+        <label for="name">Name</label>
+
+    </div>
+    <div class="input-box">
+        <input type="text" name="img" id="img" required>
+        <label for="img">Image</label>
+    </div>
+    <div class="input-box">
+
+        <input type="number" name="price" id="price" required>
+        <label for="price">Price</label>
+    </div>
+    <div class="input-box">
+        <input type="text" name="discription" id="discription" required></input>
+        <label for="discription" >Discription</label>
+    </div>
+    <button class="addbtn">Add</button>
+</form></div>
+</div>

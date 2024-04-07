@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <a href="/products"><div class="logo">
+    <img src="/images/logo1.png" alt="PMK" />
+    <p>Prakash Marammat Kendra</p>
+  </div>
+</a>
+  <div class="links">
+    <div>
+      <span>Welcome:  </span><a href="#">
+        <%if(currentUser){%>
+        <%=currentUser.username%>
+        <%}%>
+  </a>
+    </div>
+    <div><a href="/products">Home</a></div>
+    <%if(currentUser.role==='seller'){%>
+    <div><a href="/new">New</a></div>
+<%}%>
+    <%if(!currentUser){%>
+        <div><a href="/login">Login</a></div>
+        <%}else{%>
+        <div>
+          <a href="/cart-view">
+            <ion-icon name="cart-outline"></ion-icon>
+          </a>
+        </div>
+        <div><a href="/logout">Logout</a></div>
+        <%}%>
+  </div>
+</nav>

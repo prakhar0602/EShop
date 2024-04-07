@@ -1,0 +1,78 @@
+<% layout('layouts/boilerplate')%>
+<%- include('../partials/navbar')%>
+<div class="view-page">
+    
+    <div class="item">
+        <div class="item-options">
+        <img src="<%=y.img%>" alt="img">
+        <a class="btn1 red"href="">Buy</a>
+        <a class="btn1 yellow"href="">Add to Cart</a>
+        <a class="btn1 blue"href="/edit/<%=y._id%>">Edit</a>
+        </div>
+        <div class="view-desc">
+            <h2>
+                <%=y.name%>
+            </h2>
+            <h3>
+                ₹<%=y.price%>
+            </h3>
+            <h4>
+                Author:<%=y.author.username%>
+            </h4>
+            <p>
+                <%=y.discription%>
+            </p>
+        </div>
+    </div>
+   <div class="rating-system">
+    <div > 
+       <p> Ratings & Reviews</p>
+        <div>
+            <%if(msg && msg.length){%>
+                <%=msg%>
+            <%}%>
+        </div>
+        <form action="/view/<%=y._id%>" method="post">
+            <fieldset class="starability-basic">
+                <span>Give a Review:</span>
+                
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                
+                
+                <input type="radio" id="first-rate1" name="rating" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="rating" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="rating" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="rating" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="rating" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+<br>
+            <label class="com"for="comment">Comment:</label>
+            <textarea name="comment" id="comment" cols="30" rows="5"></textarea>
+            <br><br>
+            <button class="btn">Submit your Review</button>
+        </form>
+    </div>
+    <div class="n-reviews">
+
+        <%for (let i of y.reviews){%>
+           
+            <div class="review">
+                <p class="starability-result" data-rating="<%=i.rating%>">
+                    Rated: <%=i.rating%>
+                  </p>
+                <h3>Comment: <%=i.comment%>
+                </h3>
+            <p>
+                <%=i.createdAt.toDateString()%>
+            </p>
+            </div>
+          
+            <%}%>
+    </div>
+</div>
+   </div>
